@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Adı</label>
+        <input type="text" class="form-control" formControlName="person_name" #person_name />
+      </div>
+      <div *ngIf="angForm.controls['person_name'].invalid && (angForm.controls['person_name'].dirty || angForm.controls['person_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['person_name'].errors.required">
+          ad alanı  gerekli
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">İş-Meslek </label>
+        <input type="text" class="form-control" formControlName="business_name" #business_name />
+      </div>
+      <div *ngIf="angForm.controls['business_name'].invalid && (angForm.controls['business_name'].dirty || angForm.controls['business_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['business_name'].errors.required">
+          İş-Meslek gerekli
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">İşletme GST Numarası </label>
+        <input type="text" class="form-control" formControlName="business_gst_number" #business_gst_number />
+      </div>
+      <div *ngIf="angForm.controls['business_gst_number'].invalid && (angForm.controls['business_gst_number'].dirty || angForm.controls['business_gst_number'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['business_gst_number'].errors.required">
+          İşletme GST Numarası gerekli
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="addBusiness(person_name.value, business_name.value, business_gst_number.value)"
+            [disabled]="angForm.pristine || angForm.invalid" 
+            class="btn btn-primary">
+            Çalışan Ekle
+         </button>
+    </div>
+
+
+      
+    </form>
+  </div>
+</div>
